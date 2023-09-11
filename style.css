@@ -57,7 +57,7 @@ button:hover{
     margin: 0 0 0.3em 0 ;
     color: rgb(0, 0, 0);
     padding: 5%;
-    border-radius: 30%;
+    border-radius: 50px;
     box-shadow: 2px 2px #5a5a5a;
 }
 .computer{
@@ -70,7 +70,7 @@ button:hover{
     background-color: rgb(209, 209, 209);
     padding: 20px;
     margin: 0.3em;
-    border-radius: 5%;
+    border-radius: 10px;
 }
 .winnerDiv{
     text-align: center;
@@ -87,8 +87,8 @@ button:hover{
 }
 .start{
     margin-top: 2em;
-    border-radius: 45%;
-    width: 7em;
+    border-radius: 90px;
+    width: 5em;
     height: 2em;
 }
 .winner{
