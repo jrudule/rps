@@ -51,8 +51,8 @@ function game(playerSelection){
     let computerSelection = getComputerChoice();
     
     //Parāda abu spēlētāju izvēli:
-    player.textContent = "You: " + playerSelection;
-    computer.textContent = "Computer: " + computerSelection;
+    player.textContent = playerSelection;
+    computer.textContent = computerSelection;
 
     function playRound(playerSelection, computerSelection) {
         //Izveido paziņojumu tabulu - kurš zaudēja, kurš uzvarēja:
@@ -96,8 +96,8 @@ function game(playerSelection){
         } 
 
         //Parāda abu spēlētāju punktus:
-        playerScoreP.textContent = "Your score: " + playerScore;
-        computerScoreP.textContent = "Computer score: " + computerScore;
+        playerScoreP.textContent = "Score: " + playerScore;
+        computerScoreP.textContent = "Score: " + computerScore;
     }
 
     player.classList.add('smallBox');
