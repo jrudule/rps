@@ -1,8 +1,10 @@
+*{
+    font-family:'Courier New', Courier, monospace;
+}
 html{
-    background-color: grey;
+    background-color: rgb(187, 187, 187);
     width: 100vw;
     align-items: center;
-    
 }
 .container{
     align-items: center;
@@ -20,7 +22,7 @@ html{
     text-align: center;
     width: 80vw;
     font-size: 5em;
-    color: rgb(228, 228, 228);
+    color: rgb(90, 90, 90);
     margin: 1rem;
     font-weight: bold;
 }
@@ -35,10 +37,10 @@ html{
     background-color: rgb(73, 132, 162);
 }
 button{
-    width: 5em;
+    width: 5.5em;
     padding: 0.3em;
     margin: 0.2em;
-    background-color: rgb(110, 191, 114);
+    background-color: rgb(47, 178, 174);
     border-radius: 5px;
     font-weight: bold;
     box-shadow: 5px 5px #5a5a5a;
@@ -55,7 +57,6 @@ button{
 }
 .box{
     margin: 1vh 0;
-    width: 11em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,28 +84,32 @@ button{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    flex: 2 0 30vw;
-    margin: 2vw;
+    flex: 1 0 20vw;
+    margin: 1vw 3vw;
 }
 .smallBox{
-    background-color: rgb(209, 209, 209);
+    font-weight: bold;
+    background-color: rgb(227, 227, 227);
+    color: rgb(83, 83, 83);
     padding: 0.5em;
     margin: 0.3em;
     border-radius: 10px;
-    width: 10vw;
+    width: 5em;
     text-align: center;
     
 }
 .winnerDiv .smallBox{
     line-height: 1.3em;
-    background-color: rgb(223, 128, 44);
+    background-color: rgb(84, 81, 78);
+    color: rgba(245, 245, 245, 0.823);
     font-weight: bold;
     flex: 1;
+    padding: 0.5em;
 }
 .restart{
     font-size: 1em;
     margin: 1.5em;
-    flex: 1 0 30vw;
+    flex: 1 1 20vw;
 }
 .start{
     margin-top: 2em;
@@ -115,9 +120,13 @@ button{
     position: absolute;
     top: 35vh;
 }
-.winnerScore{
-    height: 2.6em;
+.winner, .winnerScore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5em;
 }
+
 
 @media only screen and (max-width: 600px){
     .start{
@@ -136,7 +145,6 @@ button{
         margin: 2vh 0;
     }
     .smallBox{
-        font-weight: bold;
         margin: 0.2vh 0;
         width: 42vw;
     }
@@ -155,7 +163,12 @@ button{
     .restart{
         flex: 1 0 80vw;
         margin: 2vh 5vw;
-        
+    }
+    
+  }
+  @media (hover: hover) and (pointer: fine) {
+    button:hover { 
+        background-color: rgba(72, 72, 72, 0.48);
     }
   }
   @media (hover: hover) and (pointer: fine) {
