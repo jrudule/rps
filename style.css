@@ -3,14 +3,15 @@
 }
 html{
     background-color: rgb(187, 187, 187);
-    width: 100vw;
     align-items: center;
+    height: 100vh;
 }
 .container{
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
 }
 .btn{
     flex-wrap: wrap;
@@ -18,6 +19,7 @@ html{
     display: flex;
 }
 .title{
+    display: none;
     flex: 1;
     text-align: center;
     width: 80vw;
@@ -27,6 +29,11 @@ html{
     font-weight: bold;
 }
 
+.valueDiv{
+    display: flex;
+    flex-wrap: wrap;
+
+}
 .Rock{
     background-color: rgb(177, 152, 152);
 }
@@ -36,8 +43,11 @@ html{
 .Scissors{
     background-color: rgb(73, 132, 162);
 }
+.Rock, .Paper, .Scissors{
+    flex: 1;
+}
 button{
-    width: 5.5em;
+    width: auto;
     padding: 0.3em;
     margin: 0.2em;
     background-color: rgb(47, 178, 174);
@@ -47,13 +57,32 @@ button{
     font-size: 4em;
     flex: 1;
 }
+
+#pointSelect{
+    width: 50px;
+}
+.selectPoints {
+    width: auto;
+    font-size: 2em;
+    
+}
+.selectDiv{
+    width: max-content;
+    margin: auto;
+   
+}
+
+.pointDiv{
+    display: none;
+     margin-top: 50px;
+}
 .gameDiv{
-    display: flex;
+    display: none;
     align-items: center;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     font-size: 2em;
+    width: 80vw;
 }
 .box{
     margin: 1vh 0;
@@ -94,7 +123,6 @@ button{
     padding: 0.5em;
     margin: 0.3em;
     border-radius: 10px;
-    width: 5em;
     text-align: center;
     
 }
@@ -107,6 +135,7 @@ button{
     padding: 0.5em;
 }
 .restart{
+    display: none;
     font-size: 1em;
     margin: 1.5em;
     flex: 1 1 20vw;
@@ -114,24 +143,84 @@ button{
 .start{
     margin-top: 2em;
     border-radius: 40px;
-    width: 25vw;
     height: 1.7em;
-    padding: 0.3em;
-    position: absolute;
-    top: 35vh;
+    padding: 0.3em 1.2em;
+    cursor: pointer;
 }
+.howToPlay{
+    border-radius: 40px;
+    font-size: 3em;
+    background: #4d76c9;
+    cursor: pointer;
+}
+
 .winner, .winnerScore{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3.5em;
+    height: 4em;
+}
+
+.notif {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+select {
+    padding: 8px 1px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.ruleDiv {
+    display: none;
+    position:absolute;
+    bottom:0;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+@media only screen and (max-width: 950px){
+    .computerDiv, .playerDiv{
+        order: 1;
+    }
+    .winnerDiv{
+        order: 2;
+    }
+    .winner, .winnerScore{
+        order: -1;
+    }
 }
 
 
+@media only screen and (max-width: 880px){
+    .start{
+        padding: 0.3em 2.1em;
+    }
+    .howToPlay{
+        font-size: 2em;
+    }
+    .title{
+        font-size: 2.5em;
+    }
+    button{
+        font-size: 3em;
+    }
+    
+  }
 @media only screen and (max-width: 600px){
     .start{
-        width: 50vw;
+        padding: 0.3em 2.1em;
     }
+    .howToPlay{
+        font-size: 2em;
+    }
+    .ruleDiv{
+        flex-direction: column;
+        position:relative;
+    }
+
     .title{
         font-size: 2.5em;
     }
@@ -165,11 +254,6 @@ button{
         margin: 2vh 5vw;
     }
     
-  }
-  @media (hover: hover) and (pointer: fine) {
-    button:hover { 
-        background-color: rgba(72, 72, 72, 0.48);
-    }
   }
   @media (hover: hover) and (pointer: fine) {
     button:hover { 

@@ -1,4 +1,6 @@
 const gameDiv = document.querySelector(".gameDiv");
+const pointDiv = document.querySelector(".pointDiv");
+const ruleDiv = document.querySelector(".ruleDiv");
 const title = document.querySelector(".title");
 
 const playerDiv = document.querySelector(".playerDiv");
@@ -9,7 +11,12 @@ const winner = document.querySelector(".winner");
 const winnerScore = document.querySelector(".winnerScore");
 
 const buttons = document.querySelectorAll('button');
+const RockButton = document.querySelectorAll('.Rock');
+const PaperButton = document.querySelectorAll('.Paper');
+const ScissorsButton = document.querySelectorAll('.Scissors');
 const start = document.querySelector('.start');
+const howToPlay = document.querySelector('.howToPlay');
+const selectPoints = document.querySelector('.selectPoints');
 const restart = document.querySelector('.restart');
 
 const h3Player = document.createElement('h3');
@@ -21,7 +28,52 @@ const computerScoreP = document.createElement("p");
 
 let playerScore = 0;
 let computerScore = 0;
+let maxPoints = 0;
 let playerSelection;
+
+start.addEventListener('click', () => {
+    start.style.display = 'none';
+    howToPlay.style.display = 'none';
+    pointDiv.style.display = 'block';
+    ruleDiv.style.display = 'none';
+});
+
+howToPlay.addEventListener('click', () => {
+    howToPlay.style.display = 'none';
+    ruleDiv.style.display = 'flex';
+});
+
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if(
+            button.value === 'Rock' || 
+            button.value === 'Paper' || 
+            button.value === 'Scissors'
+        ){  
+            //Lai nevarētu sākt gājienu, pirms nospiests "Start":
+            if (maxPoints > 0) { 
+                gameDiv.style.display = 'flex';
+                game(button.value);
+            }
+        }
+    });
+});
+
+//Lai mainītu maksimālo punktu skaitu
+const pointSelect = document.getElementById("pointSelect");
+for (let i = 1; i <= 100; i++) {
+    pointSelect.innerHTML += `<option value="${i}">${i}</option>`;
+}
+
+selectPoints.addEventListener('click', () => {
+    pointDiv.style.display = 'none';
+    maxPoints = parseInt(pointSelect.value);
+    buttons.forEach((button) => {
+        button.disabled = false;                  
+    });
+    title.style.display = 'block';  
+});
 
 function game(playerSelection){
 
@@ -112,69 +164,38 @@ function game(playerSelection){
 
     playRound(playerSelection, computerSelection);
 
-    //Ļauj spēlēt līdz 5 uzvarām:
-    if(computerScore === 5){
+    //Ļauj spēlēt līdz spēlētāja izvēlēta skaita uzvarām:
+    if(computerScore === maxPoints){
         winnerScore.textContent = "You lost!";
         endGame();
-        restartGame();
-    }else if(playerScore === 5){
+    }else if(playerScore === maxPoints){
         winnerScore.textContent = "You won!";
         endGame();
-        restartGame();
     } 
 }
 
-restart.style.visibility = 'hidden';
-title.style.visibility = 'hidden';
-
 function endGame(){
     winnerScore.classList.add("smallBox");
-    //Neļauj tālāk spēlēt, kad spēle ir beigusies:
-    buttons.forEach((button) => {
-        button.disabled = true;                  
-    });
-    title.style.visibility = 'hidden';
+    maxPoints = 0;
+    title.style.display = 'none';
     //Lai spēli varētu sākt no jauna:
-    restart.style.visibility = 'visible';
+    restart.style.display = 'block';
     restart.disabled = false;    
 }
 
-function restartGame(){
-    restart.addEventListener('click', () => {
-        //Sagatavo spēli, lai tā izskatītos kā pašā sākumā:
-        playerScore = 0;
-        computerScore = 0;
-        gameDiv.style.visibility = 'hidden';
-        restart.style.visibility = 'hidden';
-        start.style.display = 'block';
-        start.disabled = false;
-        winnerScore.textContent = "";
-        winnerScore.classList.remove("smallBox"); 
-    });
-}
-
-start.addEventListener('click', () => {
-    start.style.display = 'none';
-    gameDiv.style.visibility = 'hidden';
-    buttons.forEach((button) => {
-        button.disabled = false;                  
-    });
-    title.style.visibility = 'visible';  
+restart.addEventListener('click', () => {
+    //Sagatavo spēli, lai tā izskatītos kā pašā sākumā:
+    playerScore = 0;
+    computerScore = 0;
+    gameDiv.style.display = 'none';
+    restart.style.display = 'none';
+    start.style.display = 'block';
+    howToPlay.style.display = 'block';
+    start.disabled = false;
+    winnerScore.textContent = "";
+    winnerScore.classList.remove("smallBox"); 
 });
 
-buttons.forEach((button) => {
-    //Lai nevarētu sākt gājienu, pirms nospiests "Start":
-    button.disabled = true;
-    button.style.color = 'black';
-    start.disabled = false;
-
-    button.addEventListener('click', () => {
-        if(button.value !== 'start'){  
-            gameDiv.style.visibility = 'visible';
-            game(button.value);
-        }
-    });
-}); 
 
 
 
