@@ -2,6 +2,8 @@ const gameDiv = document.querySelector(".gameDiv");
 const pointDiv = document.querySelector(".pointDiv");
 const ruleDiv = document.querySelector(".ruleDiv");
 const title = document.querySelector(".title");
+const x = document.querySelector('.x');
+const overlay = document.getElementById('overlay');
 
 const playerDiv = document.querySelector(".playerDiv");
 const computerDiv = document.querySelector(".computerDiv");
@@ -39,10 +41,16 @@ start.addEventListener('click', () => {
 });
 
 howToPlay.addEventListener('click', () => {
-    howToPlay.style.display = 'none';
     ruleDiv.style.display = 'flex';
+    overlay.style.display = 'block';
+    howToPlay.style.display = 'none';
 });
 
+x.addEventListener('click', () => {
+    ruleDiv.style.display = 'none';
+    overlay.style.display = 'none';
+    howToPlay.style.display = 'block';
+});
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -195,7 +203,3 @@ restart.addEventListener('click', () => {
     winnerScore.textContent = "";
     winnerScore.classList.remove("smallBox"); 
 });
-
-
-
-
